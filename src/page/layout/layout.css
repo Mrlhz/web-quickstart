@@ -1,0 +1,14 @@
+.child {
+    display: inline-block;
+    background: #fff;
+    /* text-align: left; */
+    width: 100px;
+}
+
+.parent {
+    text-align: center;
+}
+
+body {
+    background: #f6f6f6;
+}
