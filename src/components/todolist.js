@@ -9,7 +9,7 @@ export default class TodoList extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        store.subscribe(this.handleStoreChange)
+        store.subscribe(this.handleStoreChange);
     }
 
     handleInputChange(e) {
@@ -27,6 +27,15 @@ export default class TodoList extends Component {
     handleSubmit() {
         const action = {
             type: 'add_todo_item'
+        };
+        store.dispatch(action);
+    }
+
+    handleDelete(index) {
+        console.log(index);
+        const action = {
+            type: 'delete_todo_item',
+            index
         };
         store.dispatch(action);
     }
@@ -57,7 +66,10 @@ export default class TodoList extends Component {
                     footer={<div>Footer</div>}
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                    renderItem={(item, index) => (
+                        <List.Item
+                            onClick={this.handleDelete.bind(this, index)}>{item}
+                        </List.Item>)}
                 />
             </div>
         )
