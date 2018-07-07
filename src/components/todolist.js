@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import store from '../store/index';
-import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreators';
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreator';
 import TodoListUI from './TodoListUI';
 
 
