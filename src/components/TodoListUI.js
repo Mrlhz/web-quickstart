@@ -1,3 +1,5 @@
+//最常用的组件是“无状态组件”，所谓无状态，也可以叫做无生命周期，无state，组件是一个纯jsx类或者对象。
+
 import React from 'react';
 import {Input, Button, List} from 'antd';
 

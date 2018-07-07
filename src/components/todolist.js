@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import store from '../store/index';
-import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreator';
 import TodoListUI from './TodoListUI';
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreator';
 
 
 export default class TodoList extends Component {
@@ -38,8 +38,8 @@ export default class TodoList extends Component {
     render() {
         return (
             <TodoListUI
-                inputValue={this.state.inputValue}
                 list={this.state.list}
+                inputValue={this.state.inputValue}
                 handleInputChange={this.handleInputChange}
                 handleSubmit={this.handleSubmit}
                 handleDelete={this.handleDelete}

@@ -1,4 +1,5 @@
 // 将action创建统一管理，方便自动化测试，返回action对象
+
 import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
