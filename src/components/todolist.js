@@ -8,6 +8,8 @@ export default class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state = store.getState();
+        console.log("getState",this.state);
+        console.log("store",store);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,7 +64,8 @@ export default class TodoList extends Component {
                     dataSource={this.state.list}
                     renderItem={(item, index) => (
                         <List.Item
-                            onClick={this.handleDelete.bind(this, index)}>{item}
+                            onClick={this.handleDelete.bind(this, index)}
+                        >{item}
                         </List.Item>)}
                 />
             </div>

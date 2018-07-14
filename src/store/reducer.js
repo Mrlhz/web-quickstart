@@ -7,7 +7,9 @@ const defaultState = {
         'Japanese princess to wed commoner.',
         'Australian walks 100km after outback crash.',
         'Man charged over missing wedding girl.',
-        'Los Angeles battles huge wildfires.']
+        'Los Angeles battles huge wildfires.',
+        'Ctrl + Alt + <--  or --> 快速返回上次查看代码的位置'
+    ]
 };
 
 export default (state = defaultState, action) => {
