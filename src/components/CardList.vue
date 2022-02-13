@@ -1,9 +1,11 @@
 <template>
-  <div class="row">
+<div class="card_list">
+    <div class="row">
     <template v-for="item in list" :key="item.id">
       <Card :item="item" />
     </template>
   </div>
+</div>
 </template>
 <script>
 import Card from './Card.vue'
@@ -27,5 +29,7 @@ export default {
 }
 </script>
 <style lang="scss">
-
+.card_list {
+  margin: 0 18px;
+}
 </style>
