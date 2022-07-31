@@ -13,8 +13,9 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'semi': 0,
-    'max-len' : ["error", {code : 300}]
+    'vue/multi-word-component-names': 'off',
+    semi: 0,
+    'max-len': ['error', { code: 300 }],
   },
   overrides: [
     {
