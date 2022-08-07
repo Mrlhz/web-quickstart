@@ -1,5 +1,6 @@
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, computed } from 'vue'
 // import './index.scss'
+import styles from './var.module.scss'
 
 export default defineComponent({
   name: 'ImageCardItem',
@@ -7,12 +8,13 @@ export default defineComponent({
     imageItem: Object,
   },
   setup(props, { emit }) {
+    const className = computed(() => ['photo-title', styles['my-link']]).value
     const { imageItem } = reactive(props)
     const { title, screencap } = imageItem || { ...props.imageItem }
     const handleClick = () => {
       emit('handleClick', imageItem)
     }
-    const photoTitle = () => (<div class="photo-title" onClick={handleClick}>{ title }</div>)
+    const photoTitle = () => (<div class={className} onClick={handleClick}>{ title }</div>)
 
     return () => (
       <div class="photo-frame">
