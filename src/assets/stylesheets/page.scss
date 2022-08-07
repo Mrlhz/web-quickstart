@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  .photo-frame {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-basis: 19%;
+    margin: 5px;
+    padding: 10px 10px 0; // padding-bottom: 0px;
+    border-radius: 6px;
+    border: 1px solid #e4ecf3;
+    box-shadow: 1px 2px 3px #f2f6f8;
+    background: #fff;
+    transition: all .3s;
+    .photo-box {
+      height: 243px;
+      img {
+        width: 100%;
+        height: 243px;
+      }
+    }
+    .photo-title {
+      height: 45px;
+      // padding: 12px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+}
