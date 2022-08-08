@@ -8,6 +8,11 @@ const routes = [
     component: Star,
   },
   {
+    path: '/downloaded',
+    name: 'Downloaded',
+    component: () => import('../views/Downloaded.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -58,4 +63,5 @@ const router = createRouter({
   routes,
 });
 
+console.log(process.env)
 export default router;
