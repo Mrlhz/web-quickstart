@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="info">
-      <div class="item title" @click="pageToBus">{{ title }}</div>
+      <div class="item title" @click="pageToBus">{{ starDetail.title }}</div>
       <div class="item copy" @click="handleCopy">Copy</div>
       <div class="item copy" @click="handleBack">Back</div>
     </div>
@@ -24,7 +24,7 @@ export default {
   props: {},
   data() {
     return {
-      title: '',
+      starDetail: {},
       list: [],
       starDetailData: {},
       viewer: {},
@@ -44,7 +44,7 @@ export default {
       setLocalData(this.$route.params, 'detailParams')
       const starDetailData = getLocalData('detailParams')
       const { star, title } = starDetailData
-      this.title = title
+      this.starDetail = starDetailData
       await this.getStarDetail({ star, movie: title })
       await this.$nextTick()
       this.handleViewer()
@@ -57,10 +57,10 @@ export default {
       this.viewer = new Viewer(document.getElementById('starDetailImages'))
     },
     pageToBus() {
-      window.open(`${process.env.VUE_APP_BUSJAV_API}/${this.title}`)
+      window.open(this.starDetail.url)
     },
     handleCopy() {
-      copyToClipboard(this.title)
+      copyToClipboard(this.starDetail.title)
     },
     handleBack() {
       this.$router.push({ name: 'StarList', params: { } })
