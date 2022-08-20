@@ -5,13 +5,14 @@ import { useRouter, onBeforeRouteLeave } from 'vue-router'
 import Viewer from 'viewerjs'
 import Request from '../utils/http'
 import { ImageCardList } from '../components/ImageCard'
+import { useScroll } from '../components/use'
 
 const router = useRouter()
+const { scrollTop } = useScroll()
 
 const star = 'Downloaded'
 const list = ref([])
 const viewer = ref(null)
-const scroll = ref(0)
 
 async function getStarList() {
   const params = { star }
@@ -28,16 +29,7 @@ async function init() {
   window.scrollTo(0, Number.parseInt(localStorage.getItem('StarListScroll'), 10))
 }
 
-function getClientHeight() {
-  return document.documentElement.scrollTop || document.body.scrollTop
-}
-function setClientHeight() {
-  scroll.value = getClientHeight()
-}
-
 onMounted(async () => {
-  document.addEventListener('scroll', setClientHeight)
-
   await init()
 })
 
@@ -46,12 +38,11 @@ onUnmounted(() => {
     viewer.value.destory()
   }
   viewer.value = {}
-  document.removeEventListener('scroll', setClientHeight)
 })
 
 onBeforeRouteLeave((to, from, next) => {
   console.log({ to, from })
-  localStorage.setItem('StarListScroll', scroll.value)
+  localStorage.setItem('StarListScroll', scrollTop.value)
   next()
 })
 
