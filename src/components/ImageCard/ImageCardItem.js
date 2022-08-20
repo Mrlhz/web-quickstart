@@ -11,8 +11,8 @@ export default defineComponent({
     const className = computed(() => ['photo-title', styles['my-link']]).value
     const { imageItem } = reactive(props)
     const { title, screencap } = imageItem || { ...props.imageItem }
-    const handleClick = () => {
-      emit('handleClick', imageItem)
+    const handleClick = (event) => {
+      emit('handle-click', imageItem, event) // jsx接收用 onHandleClick
     }
     const photoTitle = () => (<div class={className} onClick={handleClick}>{ title }</div>)
 

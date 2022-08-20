@@ -24,7 +24,6 @@ async function getStarList() {
 
 async function init() {
   await getStarList()
-  // this.handleViewer()
   viewer.value = new Viewer(document.getElementById('images'))
   window.scrollTo(0, Number.parseInt(localStorage.getItem('StarListScroll'), 10))
 }
@@ -46,8 +45,8 @@ onBeforeRouteLeave((to, from, next) => {
   next()
 })
 
-function handleClick(item) {
-  console.log('starList', item, router)
+function handleClick(item, e) {
+  console.log('starList', item, e.target)
   router.push({ name: 'StarDetail', params: { ...item, star } })
 }
 
@@ -55,6 +54,6 @@ function handleClick(item) {
 
 <template>
   <div class="wrapper" id="images" ref="images">
-    <ImageCardList :list="list" :star="star" @handleItemClick="handleClick" />
+    <ImageCardList :list="list" @handleItemClick="handleClick" />
   </div>
 </template>

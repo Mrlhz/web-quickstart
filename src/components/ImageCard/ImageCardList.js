@@ -1,4 +1,8 @@
-import { defineComponent, reactive } from 'vue'
+import {
+  defineComponent,
+  getCurrentInstance,
+} from 'vue'
+
 import ImageCardItem from './ImageCardItem'
 
 export default defineComponent({
@@ -11,19 +15,16 @@ export default defineComponent({
       },
     },
   },
-  setup(props, { emit }) {
-    const { list } = reactive(props)
+  emits: ['handleItemClick'],
+  setup(props) {
+    const { ctx } = getCurrentInstance()
     const renderItem = (item) => {
-      const onClick = (currentItem) => {
-        console.log({ ...currentItem, item })
-        emit('handleItemClick', item)
+      const onClick = (_, e) => {
+        ctx.$emit('handleItemClick', item, e)
       }
-      return (<ImageCardItem imageItem={item} onClick={onClick} />)
+      return (<ImageCardItem imageItem={item} onHandleClick={onClick} />)
     }
-    const renderList = () => {
-      console.log(list)
-      return list.map((item) => renderItem(item))
-    }
+    const renderList = () => props.list.map((item) => renderItem(item))
 
     return () => renderList()
   },
