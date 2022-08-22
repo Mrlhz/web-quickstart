@@ -1,4 +1,9 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+} from 'vue'
+import Viewer from 'viewerjs'
 
 export function getClientHeight() {
   return document.documentElement.scrollTop || document.body.scrollTop
@@ -46,4 +51,22 @@ export function useScroll() {
 
   // 通过返回值暴露所管理的状态
   return { scrollTop }
+}
+
+export function useViewer({ selector, el }) {
+  const viewer = ref(null)
+  const element = el || document.querySelector(selector) || document
+  if (element) {
+    viewer.value = new Viewer(element)
+  }
+
+  return viewer
+}
+
+export function useRemoveViewer(viewer) {
+  if (viewer && viewer.destory) {
+    viewer.destory()
+  }
+
+  return {}
 }

@@ -1,18 +1,33 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import {
+  ref,
+  reactive,
+  onBeforeMount,
+  onMounted,
+  onUnmounted,
+  defineProps,
+} from 'vue'
 import { useRouter, onBeforeRouteLeave } from 'vue-router'
 
-import Viewer from 'viewerjs'
-import Request from '../utils/http'
 import { ImageCardList } from '../components/ImageCard'
-import { useScroll } from '../components/use'
+import { useScroll, useViewer, useRemoveViewer } from '../components/use'
+import Request from '../utils/http'
 
 const router = useRouter()
 const { scrollTop } = useScroll()
 
-const star = 'Downloaded'
+const props = defineProps({
+  star: {
+    type: String,
+    default: 'Downloaded',
+  },
+})
+
+const { star } = reactive(props)
+const storeKey = `${star}Scroll`
 const list = ref([])
-const viewer = ref(null)
+const viewer = ref({})
+const images = ref()
 
 async function getStarList() {
   const params = { star }
@@ -24,24 +39,22 @@ async function getStarList() {
 
 async function init() {
   await getStarList()
-  viewer.value = new Viewer(document.getElementById('images'))
-  window.scrollTo(0, Number.parseInt(localStorage.getItem('StarListScroll'), 10))
+  viewer.value = useViewer({ el: images.value }) // el === document.getElementById('images')
+  window.scrollTo(0, Number.parseInt(localStorage.getItem(storeKey), 10))
 }
 
-onMounted(async () => {
+onBeforeMount(async () => {
   await init()
 })
 
+onMounted(() => {})
+
 onUnmounted(() => {
-  if (viewer.value.destory) {
-    viewer.value.destory()
-  }
-  viewer.value = {}
+  viewer.value = useRemoveViewer(viewer.value)
 })
 
 onBeforeRouteLeave((to, from, next) => {
-  console.log({ to, from })
-  localStorage.setItem('StarListScroll', scrollTop.value)
+  localStorage.setItem(storeKey, scrollTop.value)
   next()
 })
 
