@@ -1,6 +1,5 @@
 import {
   defineComponent,
-  getCurrentInstance,
 } from 'vue'
 
 import ImageCardItem from './ImageCardItem'
@@ -16,11 +15,10 @@ export default defineComponent({
     },
   },
   emits: ['handleItemClick'],
-  setup(props) {
-    const { ctx } = getCurrentInstance()
+  setup(props, context) {
     const renderItem = (item) => {
       const onClick = (_, e) => {
-        ctx.$emit('handleItemClick', item, e)
+        context.emit('handleItemClick', item, e)
       }
       return (<ImageCardItem imageItem={item} onHandleClick={onClick} />)
     }
