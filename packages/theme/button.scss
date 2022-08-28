@@ -1,0 +1,22 @@
+
+.v-button {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e4ecf3;
+  box-shadow: 1px 2px 3px #f2f6f8;
+  cursor: pointer;
+}
+
+.v-button--normal {
+  padding: 0 15px;
+  font-size: 14px;
+}
