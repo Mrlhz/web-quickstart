@@ -13,10 +13,22 @@
   border-radius: 6px;
   border: 1px solid #e4ecf3;
   box-shadow: 1px 2px 3px #f2f6f8;
+  color: #323233;
   cursor: pointer;
+  // .v-button--default
+  &--default {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &--large {
+    padding: 0 24px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: 400;
+  }
 }
 
-.v-button--normal {
-  padding: 0 15px;
-  font-size: 14px;
-}

@@ -22,12 +22,13 @@ function genBem(name = '', mods) {
 }
 
 /**
- * bem helper
- * b() // 'button'
- * b('text') // 'button__text'
- * b({ disabled }) // 'button button--disabled'
- * b('text', { disabled }) // 'button__text button__text--disabled'
- * b(['disabled', 'primary']) // 'button button--disabled button--primary'
+ * @description bem helper
+ * bem() // 'v-button'
+ * bem('normal') // v-button__normal
+ * bem('text') // v-button__text
+ * bem({ disabled: true }) // v-button v-button--disabled
+ * bem('text', { disabled: true }) // v-button__text v-button__text--disabled
+ * bem(['disabled', 'primary']) // v-button v-button--disabled v-button--primary
  */
 export function createBEM(name = '') {
   return (el, mods) => {

@@ -15,14 +15,26 @@ export default defineComponent({
   setup(props, context) {
     const { emit, slots } = context
     console.log(props, context, Object.keys(context))
-    console.log(bem())
-    console.log(bem('text'))
-    console.log(bem({ disabled: true }))
-    console.log(bem('text', { disabled: true }))
-    console.log(bem(['disabled', 'primary']))
-    const { tag, nativeType } = reactive(props)
-    const classes = ['v-button', 'v-button--normal']
+    const {
+      tag,
+      type,
+      size,
+      nativeType,
+      disabled,
+    } = reactive(props)
+    const classes = [
+      bem([
+        type, // 'v-button', 'v-button--default'
+        size, // 'v-button--normal'
+        {
+          disabled,
+        },
+      ]),
+    ]
     const onClick = (event) => {
+      if (disabled) {
+        return
+      }
       emit('click', event)
     }
 
@@ -38,6 +50,7 @@ export default defineComponent({
       <tag
         type={nativeType}
         class={classes}
+        disabled={disabled}
         onClick={onClick}
       >
         {renderText()}
