@@ -16,6 +16,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     semi: 0,
     'max-len': ['error', { code: 300 }],
+    'default-param-last': 0,
   },
   overrides: [
     {
