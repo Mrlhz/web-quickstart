@@ -4,7 +4,7 @@
       <div class="item masonry-brick" v-for="item in imagesList" :key="item.name">
         <a class="avatar-box text-center" @click="handleClick(item)">
           <div class="photo-frame">
-            <img :src="item.url" :title="item.name" />
+            <img :src="item.url" :title="item.name" :alt="item.name"/>
           </div>
           <div class="photo-info">
             <span class="mleft">{{ item.name }}
@@ -43,9 +43,10 @@ export default {
   methods: {
     handleClick(item) {
       console.log(item)
-      this.$router.push({ name: 'StarList', params: item })
+      this.$store.commit('setStarParams', item)
+      this.$router.push({ name: 'StarList' })
     },
-    async getAvatarList() {
+    getAvatarList() {
       this.imagesList = this.list.map((item) => {
         const origin = process.env.VUE_APP_PUBLIC
         return {

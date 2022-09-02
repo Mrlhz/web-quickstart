@@ -8,12 +8,14 @@ import {
   defineProps,
 } from 'vue'
 import { useRouter, onBeforeRouteLeave } from 'vue-router'
+import { useStore } from 'vuex'
 
 import { ImageCardList } from '../components/ImageCard'
 import { useScroll, useViewer, useRemoveViewer } from '../components/use'
 import Request from '../utils/http'
 
 const router = useRouter()
+const $store = useStore()
 const { scrollTop } = useScroll()
 
 const props = defineProps({
@@ -59,8 +61,9 @@ onBeforeRouteLeave((to, from, next) => {
 })
 
 function handleClick(item, e) {
-  console.log('starList', item, e.target)
-  router.push({ name: 'StarDetail', params: { ...item, star } })
+  console.log('starList', item, e.target, star)
+  $store.commit('setStarDetailParams', { ...item, star })
+  router.push({ name: 'StarDetail', n: 0 })
 }
 
 </script>

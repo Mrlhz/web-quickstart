@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
+  <div class="starDetailWrapper">
     <div class="info">
-      <div class="item title" @click="pageToBus">{{ starDetail.title }}</div>
-      <div class="item copy" @click="handleCopy">Copy</div>
-      <div class="item copy" @click="handleBack">Back</div>
+      <Button class="title" size="large" @click="pageToBus">{{ starDetail.title }}</Button>
+      <Button size="large" @click="handleCopy">Copy</Button>
+      <Button size="large" @click="handleBack">Back</Button>
     </div>
     <div class="starDetail" id="starDetailImages">
       <template v-for="item in list" :key="item.name">
@@ -18,9 +18,13 @@
 import Viewer from 'viewerjs'
 import { setLocalData, getLocalData, copyToClipboard } from '@/utils/util'
 import { getStarDetail } from '@/utils/request'
+import Button from '../../packages/button/Button'
 
 export default {
   name: 'StarDetail',
+  components: {
+    Button,
+  },
   props: {},
   data() {
     return {
@@ -41,8 +45,10 @@ export default {
   },
   methods: {
     async init() {
-      setLocalData(this.$route.params, 'detailParams')
-      const starDetailData = getLocalData('detailParams')
+      console.log(this.$store.state)
+      const { starDetailParams } = this.$store.state
+      setLocalData(starDetailParams, 'detailParams')
+      const starDetailData = getLocalData('detailParams') || {}
       const { star, title } = starDetailData
       this.starDetail = starDetailData
       await this.getStarDetail({ star, movie: title })
@@ -50,8 +56,8 @@ export default {
       this.handleViewer()
     },
     async getStarDetail(params) {
-      const { screencap, images } = await getStarDetail(params)
-      this.list = [screencap, ...images]
+      const { screencap, images = [] } = await getStarDetail(params)
+      this.list = screencap ? [screencap, ...images] : []
     },
     handleViewer() {
       this.viewer = new Viewer(document.getElementById('starDetailImages'))
@@ -63,39 +69,26 @@ export default {
       copyToClipboard(this.starDetail.title)
     },
     handleBack() {
-      this.$router.push({ name: 'StarList', params: { } })
+      this.$router.push({ name: 'StarList' })
     },
   },
 }
 </script>
-<style lang="scss" scoped>
-.wrapper {
+<style lang="scss">
+.starDetailWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   .info {
     display: flex;
     justify-content: center;
-    .item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .title .v-button__text {
       font-size: 35px;
       font-weight: 700;
-      background-color: #fff;
-      border-radius: 6px;
-      border: 1px solid #e4ecf3;
-      box-shadow: 1px 2px 3px #f2f6f8;
+      color: #2c3e50;
     }
     .title {
-      width: 220px;
-      height: 50px;
       margin-right: 10px;
-    }
-    .copy {
-      width: 120px;
-      font-size: 30px;
-      font-weight: 400;
     }
   }
   .starDetail {
