@@ -1,31 +1,23 @@
-import { createStore } from 'vuex'
-import movie from './module/movie'
+import { createPinia, defineStore } from 'pinia'
 
-const state = {
-  starParams: {},
-  starDetailParams: {},
-}
+export const pinia = createPinia()
 
-// https://vuex.vuejs.org/zh/guide/mutations.html#mutation-必须是同步函数
-const mutations = {
-  // eslint-disable-next-line no-shadow
-  setStarDetailParams: (state, params) => {
-    state.starDetailParams = params
-  },
-  // eslint-disable-next-line no-shadow
-  setStarParams: (state, params) => {
-    state.starParams = params
-  },
-}
-
-export default createStore({
-  state,
-  getters: {
-  },
-  mutations,
+export const useStarStore = defineStore('star', {
+  state: () => ({
+    starParams: {},
+    starDetailParams: {}
+  }),
+  getters: {},
+  // https://pinia.vuejs.org/core-concepts/actions.html
   actions: {
-  },
-  modules: {
-    movie,
-  },
-});
+    // eslint-disable-next-line no-shadow
+    setStarDetailParams: (params) => {
+      console.log(this)
+      this.starDetailParams = params
+    },
+    // eslint-disable-next-line no-shadow
+    setStarParams: (params) => {
+      this.starParams = params
+    }
+  }
+})

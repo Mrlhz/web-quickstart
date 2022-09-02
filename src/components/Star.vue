@@ -28,34 +28,30 @@ export default {
       type: Array,
       default() {
         return []
-      },
-    },
+      }
+    }
   },
   data() {
     return {
-      imagesList: [],
     }
   },
-  mounted() {
-    console.log(this.imagesList)
-    this.getAvatarList()
-  },
-  methods: {
-    handleClick(item) {
-      console.log(item)
-      this.$store.commit('setStarParams', item)
-      this.$router.push({ name: 'StarList' })
-    },
-    getAvatarList() {
-      this.imagesList = this.list.map((item) => {
+  computed: {
+    imagesList() {
+      return this.list.map((item) => {
         const origin = process.env.VUE_APP_PUBLIC
         return {
           name: item.name,
-          url: item.url.includes('http') ? item.url : `${origin}/${item.url}`,
+          url: item.url.includes('http') ? item.url : `${origin}/${item.url}`
         }
       })
-    },
+    }
   },
+  mounted() { },
+  methods: {
+    handleClick(item) {
+      this.$emit('handleClick', item)
+    }
+  }
 };
 </script>
 

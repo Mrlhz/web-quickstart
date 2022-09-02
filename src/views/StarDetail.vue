@@ -19,11 +19,14 @@ import Viewer from 'viewerjs'
 import { setLocalData, getLocalData, copyToClipboard } from '@/utils/util'
 import { getStarDetail } from '@/utils/request'
 import Button from '../../packages/button/Button'
+import { useStarStore } from '../store/index'
+
+const store = useStarStore()
 
 export default {
   name: 'StarDetail',
   components: {
-    Button,
+    Button
   },
   props: {},
   data() {
@@ -31,11 +34,10 @@ export default {
       starDetail: {},
       list: [],
       starDetailData: {},
-      viewer: {},
+      viewer: {}
     }
   },
   mounted() {
-    console.log(this.$route.params)
     this.init()
   },
   beforeUnmount() {
@@ -45,8 +47,8 @@ export default {
   },
   methods: {
     async init() {
-      console.log(this.$store.state)
-      const { starDetailParams } = this.$store.state
+      const { starDetailParams } = store // store.$state
+      console.log(starDetailParams)
       setLocalData(starDetailParams, 'detailParams')
       const starDetailData = getLocalData('detailParams') || {}
       const { star, title } = starDetailData
@@ -70,8 +72,8 @@ export default {
     },
     handleBack() {
       this.$router.push({ name: 'StarList' })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss">

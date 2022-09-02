@@ -5,24 +5,24 @@ import {
   onBeforeMount,
   onMounted,
   onUnmounted,
-  defineProps,
+  defineProps
 } from 'vue'
 import { useRouter, onBeforeRouteLeave } from 'vue-router'
-import { useStore } from 'vuex'
 
 import { ImageCardList } from '../components/ImageCard'
 import { useScroll, useViewer, useRemoveViewer } from '../components/use'
 import Request from '../utils/http'
+import { useStarStore } from '../store/index'
 
 const router = useRouter()
-const $store = useStore()
+const starStore = useStarStore()
 const { scrollTop } = useScroll()
 
 const props = defineProps({
   star: {
     type: String,
-    default: 'Downloaded',
-  },
+    default: 'Downloaded'
+  }
 })
 
 const { star } = reactive(props)
@@ -62,7 +62,7 @@ onBeforeRouteLeave((to, from, next) => {
 
 function handleClick(item, e) {
   console.log('starList', item, e.target, star)
-  $store.commit('setStarDetailParams', { ...item, star })
+  starStore.starDetailParams = { ...item, star }
   router.push({ name: 'StarDetail', n: 0 })
 }
 
