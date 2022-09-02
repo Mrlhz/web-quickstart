@@ -14,7 +14,6 @@ export default defineComponent({
   emits: ['click'],
   setup(props, context) {
     const { emit, slots } = context
-    console.log(props, context, Object.keys(context))
     const {
       tag,
       type,
@@ -41,7 +40,7 @@ export default defineComponent({
     const renderText = () => {
       const text = slots.default ? slots.default() : props.text
       if (text) {
-        return <span class='v-button__text'>{text}</span>
+        return <span class={bem('text')}>{text}</span>
       }
       return ''
     }
@@ -53,7 +52,9 @@ export default defineComponent({
         disabled={disabled}
         onClick={onClick}
       >
-        {renderText()}
+        <div class={bem('content')}>
+          {renderText()}
+        </div>
       </tag>
     )
   },

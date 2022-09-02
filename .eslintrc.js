@@ -17,6 +17,7 @@ module.exports = {
     semi: 0,
     'max-len': ['error', { code: 300 }],
     'default-param-last': 0,
+    'vuejs-accessibility/click-events-have-key-events': 'off',
   },
   overrides: [
     {
