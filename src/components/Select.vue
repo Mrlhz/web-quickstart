@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       refresh: true,
-      tagList: tagList.data.questionTagTypeWithTags,
+      tagList: tagList.data.questionTagTypeWithTags
     }
   },
   created() {
@@ -47,8 +47,8 @@ export default {
       this.refresh = false
       await this.$nextTick()
       this.refresh = true
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

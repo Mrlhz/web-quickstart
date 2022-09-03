@@ -59,7 +59,7 @@ export default {
     },
     async getStarDetail(params) {
       const { screencap, images = [] } = await getStarDetail(params)
-      this.list = screencap ? [screencap, ...images] : []
+      this.list = screencap ? [screencap, ...images] : images || []
     },
     handleViewer() {
       this.viewer = new Viewer(document.getElementById('starDetailImages'))

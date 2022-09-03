@@ -1,6 +1,6 @@
 import {
   defineComponent,
-  reactive,
+  reactive
 } from 'vue'
 
 import buttonProps from './prop'
@@ -19,16 +19,16 @@ export default defineComponent({
       type,
       size,
       nativeType,
-      disabled,
+      disabled
     } = reactive(props)
     const classes = [
       bem([
         type, // 'v-button', 'v-button--default'
         size, // 'v-button--normal'
         {
-          disabled,
-        },
-      ]),
+          disabled
+        }
+      ])
     ]
     const onClick = (event) => {
       if (disabled) {
@@ -57,5 +57,5 @@ export default defineComponent({
         </div>
       </tag>
     )
-  },
+  }
 })

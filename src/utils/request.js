@@ -12,11 +12,8 @@ function getSeriesList(params) {
   return Http.get('/series', { params }).then(({ avatarList }) => avatarList || {})
 }
 
-function noon() {}
-
 export {
   getStarDetail,
   getStarList,
-  getSeriesList,
-  noon,
+  getSeriesList
 }

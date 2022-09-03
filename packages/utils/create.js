@@ -4,7 +4,7 @@ function isString(str) {
   return typeof str === 'string'
 }
 
-function genBem(name = '', mods) {
+function genBem(name = '', mods = '') {
   if (!mods) {
     return ''
   }
@@ -49,6 +49,6 @@ export function createNamespace(name = '') {
   const prefixedName = `v-${name}`
   return [
     prefixedName,
-    createBEM(prefixedName),
+    createBEM(prefixedName)
   ]
 }

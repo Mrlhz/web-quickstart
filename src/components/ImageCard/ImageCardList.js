@@ -1,5 +1,5 @@
 import {
-  defineComponent,
+  defineComponent
 } from 'vue'
 
 import ImageCardItem from './ImageCardItem'
@@ -11,8 +11,8 @@ export default defineComponent({
       type: Array,
       default() {
         return []
-      },
-    },
+      }
+    }
   },
   emits: ['handleItemClick'],
   setup(props, context) {
@@ -25,5 +25,5 @@ export default defineComponent({
     const renderList = () => props.list.map((item) => renderItem(item))
 
     return () => renderList()
-  },
+  }
 })

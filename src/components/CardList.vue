@@ -14,18 +14,18 @@ import { list } from './card'
 export default {
   name: 'CardList',
   components: {
-    Card,
+    Card
   },
   computed: {},
   data() {
     return {
-      list,
+      list
     }
   },
   created() {
 
   },
-  mounted() {},
+  mounted() {}
 }
 </script>
 <style lang="scss">

@@ -1,20 +1,21 @@
 <template>
-  <StarComp v-if="show" :list="imagesList" />
+  <StarComp v-if="show" :list="imagesList" @handleClick="handleClick" />
 </template>
 
 <script>
 import StarComp from '@/components/Star.vue'
 import { getStarList } from '@/utils/request'
+import { useStarStore } from '../store/index'
 
 export default {
   name: 'Series',
   components: {
-    StarComp,
+    StarComp
   },
   data() {
     return {
       imagesList: [],
-      show: false,
+      show: false
     }
   },
   mounted() {
@@ -26,7 +27,12 @@ export default {
       this.imagesList = result
       this.show = true
     },
-  },
+    handleClick(item) {
+      const store = useStarStore()
+      store.$patch({ starParams: item })
+      this.$router.push({ name: 'StarList' })
+    }
+  }
 };
 </script>
 

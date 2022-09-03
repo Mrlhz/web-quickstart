@@ -5,7 +5,7 @@ import styles from './var.module.scss'
 export default defineComponent({
   name: 'ImageCardItem',
   props: {
-    imageItem: Object,
+    imageItem: Object
   },
   setup(props, { emit }) {
     const className = computed(() => ['photo-title', styles['my-link']]).value
@@ -25,5 +25,5 @@ export default defineComponent({
         { photoTitle() }
       </div>
     )
-  },
+  }
 })

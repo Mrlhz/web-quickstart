@@ -4,7 +4,7 @@
       <div class="title_wrapper">
         <div class="favicon">
           <img :src="`http://localhost:3005/image/${item.img}`" :alt="item.title">
-          <img src="../assets/image/favicon.ico" :alt="item.title">
+          <!-- <img src="../assets/image/favicon.ico" :alt="item.title"> -->
           <!-- <img :src="require(`./assets/image/${item.img}`)" :alt="item.title"> -->
         </div>
         <div class="title">{{ item.title }}</div>
@@ -30,28 +30,30 @@ export default {
   components: {},
   props: {
     item: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   computed: {
     cardClass() {
       // 1 2 3 4
       // 24 12 8 6
       return ['col-xs-24', 'col-sm-12', 'col-md-8', 'col-lg-8', 'col-xl-6']
-    },
+    }
   },
   data() {
     return {
-      msg: '逆水行舟，不进则退。意指顶着水流行船。比喻不努力前进就要被其他竞争者超过，从而相对位移会往后退，置自己于更不利的地位。',
+      msg: '逆水行舟，不进则退。意指顶着水流行船。比喻不努力前进就要被其他竞争者超过，从而相对位移会往后退，置自己于更不利的地位。'
     }
   },
   created() {
 
   },
-  mounted() {},
+  mounted() {}
 }
 </script>
 <style lang="scss">
+// @import url('../assets/stylesheets/card.scss');
+
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
@@ -78,8 +80,8 @@ $colors: (
 
 .card {
   margin: 6px;
-  padding: 6px 10px;
-  border-radius: 5px;
+  padding: 12px 10px 6px;
+  border-radius: 10px;
   background-color: #fff;
   text-align: initial;
   .desc,

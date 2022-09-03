@@ -16,16 +16,16 @@ export default {
       top: 100,
       left: 100,
       clientX: 0,
-      clientY: 0,
+      clientY: 0
     }
   },
   computed: {
     style() {
       return {
         top: `${this.top}px`,
-        left: `${this.left}px`,
+        left: `${this.left}px`
       }
-    },
+    }
   },
   created() {},
   mounted() {
@@ -63,8 +63,8 @@ export default {
       const top = Math.max(e.clientY - y, 0)
       this.top = Math.min(top, maxHeight)
       this.left = Math.min(left, maxWidth)
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss">

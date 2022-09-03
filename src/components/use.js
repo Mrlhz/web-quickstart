@@ -1,7 +1,7 @@
 import {
   ref,
   onMounted,
-  onUnmounted,
+  onUnmounted
 } from 'vue'
 import Viewer from 'viewerjs'
 

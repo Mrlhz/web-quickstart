@@ -1,20 +1,20 @@
 export default {
   tag: {
     type: String,
-    default: 'button',
+    default: 'button'
   },
   text: String,
   type: {
     type: String,
-    default: 'default',
+    default: 'default'
   },
   size: {
     type: String,
-    default: 'normal',
+    default: 'normal'
   },
   nativeType: {
     type: String,
-    default: 'button',
+    default: 'button'
   },
-  disabled: Boolean,
+  disabled: Boolean
 }

@@ -43,5 +43,5 @@ export {
   extname,
   findItem,
   setLocalData,
-  getLocalData,
+  getLocalData
 }
