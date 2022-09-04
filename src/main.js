@@ -10,4 +10,9 @@ import 'viewerjs/dist/viewer.min.css'
 import '@/assets/stylesheets/page.scss'
 import '../packages/theme/index.scss'
 
-createApp(App).use(pinia).use(router).mount('#app')
+// createApp(App).use(pinia).use(router).mount('#app')
+
+const app = createApp(App)
+app.use(pinia)
+app.use(router)
+app.mount('#app')

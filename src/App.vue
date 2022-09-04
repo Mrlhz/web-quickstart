@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Star</router-link> |
+    <router-link to="/star">Star</router-link> |
     <router-link to="/series">Series</router-link> |
     <router-link to="/downloaded">Downloaded</router-link> |
     <router-link to="/todo">ToDo</router-link> |

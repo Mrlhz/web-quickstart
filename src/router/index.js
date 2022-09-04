@@ -1,16 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Star from '../views/Star.vue';
+import Series from '../views/Series.vue';
 
 const routes = [
   {
-    path: '/',
+    path: '/:type',
     name: 'Star',
-    component: Star,
+    component: Series,
+    props: true
   },
   {
     path: '/downloaded',
     name: 'Downloaded',
-    component: () => import('../views/Downloaded.vue'),
+    component: () => import('../views/Downloaded.vue')
+  },
+  {
+    path: '/todo',
+    name: 'ToDo',
+    component: () => import('../views/ToDo.vue')
   },
   {
     path: '/about',
@@ -18,18 +24,18 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   // {
   //   path: '/star',
   //   name: 'Star',
   //   component: () => import('../views/Star.vue'),
   // },
-  {
-    path: '/series',
-    name: 'Series',
-    component: () => import('../views/Series.vue'),
-  },
+  // {
+  //   path: '/series',
+  //   name: 'Series',
+  //   component: () => import('../views/Series.vue')
+  // },
   {
     path: '/starList',
     name: 'StarList',
@@ -37,30 +43,30 @@ const routes = [
     meta: {
       title: 'StarList',
       keepAlive: true, // 需要缓存
-      scroll: 0,
-    },
+      scroll: 0
+    }
   },
   {
     path: '/starDetail',
     name: 'StarDetail',
-    component: () => import('../views/StarDetail.vue'),
+    component: () => import('../views/StarDetail.vue')
   },
   // 学习demo
   {
     path: '/drag',
     name: 'Drag',
-    component: () => import('../components/Drag.vue'),
+    component: () => import('../components/Drag.vue')
   },
   {
     path: '/card',
     name: 'Card',
-    component: () => import('../components/CardList.vue'),
-  },
+    component: () => import('../components/CardList.vue')
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 console.log(process.env)

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="waterfall">
-      <div class="item masonry-brick" v-for="item in imagesList" :key="item.name">
+      <div class="item masonry-brick" v-for="item in list" :key="item.key">
         <a class="avatar-box text-center" @click="handleClick(item)">
           <div class="photo-frame">
             <img :src="item.url" :title="item.name" :alt="item.name"/>
@@ -32,20 +32,9 @@ export default {
     }
   },
   data() {
-    return {
-    }
+    return { }
   },
-  computed: {
-    imagesList() {
-      return this.list.map((item) => {
-        const origin = process.env.VUE_APP_PUBLIC
-        return {
-          name: item.name,
-          url: item.url.includes('http') ? item.url : `${origin}/${item.url}`
-        }
-      })
-    }
-  },
+  computed: { },
   mounted() { },
   methods: {
     handleClick(item) {

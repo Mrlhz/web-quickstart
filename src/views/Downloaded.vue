@@ -12,10 +12,11 @@ import { useRouter, onBeforeRouteLeave } from 'vue-router'
 import { ImageCardList } from '../components/ImageCard'
 import { useScroll, useViewer, useRemoveViewer } from '../components/use'
 import Request from '../utils/http'
-import { useStarStore } from '../store/index'
+import { useStarStore, useMovieStore } from '../store/index'
 
 const router = useRouter()
 const starStore = useStarStore()
+const movieStore = useMovieStore()
 const { scrollTop } = useScroll()
 
 const props = defineProps({
@@ -26,7 +27,7 @@ const props = defineProps({
 })
 
 const { star } = reactive(props)
-const storeKey = `${star}Scroll`
+const storeKey = 'starList_Scroll_Value'.toLocaleUpperCase() || `${star}Scroll`
 const list = ref([])
 const viewer = ref({})
 const images = ref()
@@ -63,6 +64,7 @@ onBeforeRouteLeave((to, from, next) => {
 function handleClick(item, e) {
   console.log('starList', item, e.target, star)
   starStore.starDetailParams = { ...item, star }
+  movieStore.setMovie({ ...item, star })
   router.push({ name: 'StarDetail', n: 0 })
 }
 
