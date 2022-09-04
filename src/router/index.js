@@ -3,7 +3,7 @@ import Series from '../views/Series.vue';
 
 const routes = [
   {
-    path: '/:type',
+    path: '/:type?', // The last ? means this parameter is optional.
     name: 'Star',
     component: Series,
     props: true

@@ -29,7 +29,8 @@ export default {
     type: {
       handler(val) {
         this.timestamp = Date.now()
-        this.getAvatarList(val)
+        // 路由不传类型值时，使用默认值
+        this.getAvatarList(val || 'star')
       },
       immediate: true
     }

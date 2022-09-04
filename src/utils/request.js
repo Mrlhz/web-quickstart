@@ -5,7 +5,7 @@ function getStarDetail(params) {
 }
 
 function getStarList(params) {
-  return Http.get('/avatar', { params }).then(({ avatarList }) => avatarList || {})
+  return Http.get('/avatar', { params }).then(({ avatarList }) => avatarList || [])
 }
 
 function getSeriesList(params) {
