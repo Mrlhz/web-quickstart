@@ -8,9 +8,7 @@
           </div>
           <div class="photo-info">
             <span class="mleft">{{ item.name }}
-              <button class="btn btn-xs btn-info">
-                有碼
-              </button>
+              <Button size="mini" type="info">有碼</Button>
             </span>
           </div>
         </a>
@@ -20,9 +18,13 @@
 </template>
 
 <script>
+import Button from '../../packages/button/Button'
 
 export default {
   name: 'StarComp',
+  components: {
+    Button
+  },
   props: {
     list: {
       type: Array,
@@ -97,20 +99,6 @@ export default {
         background-color: #fafafa;
         border-top: 1px solid #f2f2f2;
       }
-    }
-    .btn-info {
-      background-color: #2aabd2;
-      border-color: #46b8da;
-      color: #fff;
-      box-shadow: none;
-      opacity: 0.65;
-      border: 1px solid transparent;
-    }
-    .btn-xs {
-      padding: 1px 5px;
-      font-size: 12px;
-      line-height: 1.5;
-      border-radius: 3px;
     }
   }
 }
