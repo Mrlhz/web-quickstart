@@ -1,8 +1,8 @@
 .wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0 auto;
+  margin: 0 10px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 20%);
   .photo-frame {
     display: flex;
     flex-wrap: wrap;
@@ -31,5 +31,36 @@
       font-size: 24px;
       font-weight: 500;
     }
+  }
+}
+
+@media (max-width: 575px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+}
+@media (min-width: 576px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 90%);
+  }
+}
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 50%);
+  }
+}
+@media (min-width: 992px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 32%);
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 25%);
+  }
+}
+@media (min-width: 1400px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fill, 20%);
   }
 }
