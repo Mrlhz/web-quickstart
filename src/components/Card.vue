@@ -37,7 +37,7 @@ export default {
     cardClass() {
       // 1 2 3 4
       // 24 12 8 6
-      return ['col-xs-24', 'col-sm-12', 'col-md-8', 'col-lg-8', 'col-xl-6']
+      return ['col-sm-12', 'col-md-6', 'col-lg-6', 'col-xl-4', 'col-xxl-3']
     }
   },
   data() {

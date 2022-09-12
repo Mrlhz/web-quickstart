@@ -1,7 +1,15 @@
 @charset "UTF-8";
 
-$columns: 24 !default;
-$grid-columns: 24 !default;
+/*!
+ * Reference Bootstrap Grid v5.2.0 (https://getbootstrap.com/)
+ * bootstrap-5.2.0/scss/mixins/_grid.scss
+ * bootstrap-5.2.0/scss/_grid.scss
+ * bootstrap-5.2.0/scss/_variables.scss
+ * bootstrap-5.2.0/dist/css/bootstrap-grid.css
+ */
+
+$columns: 12 !default;
+$grid-columns: 12 !default;
 
 $grid-gutter-width: 0px !default;
 
@@ -12,48 +20,46 @@ $lg: 1200px !default;
 $xl: 1920px !default;
 
 $grid-breakpoints: (
-  'xs' : (max-width: $sm - 1),
-  'sm' : (min-width: $sm),
-  'md' : (min-width: $md),
-  'lg' : (min-width: $lg),
-  'xl' : (min-width: $xl)
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 ) !default;
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
+  margin-top: 0; // stylelint-disable-line function-disallowed-list
+  margin-right: 0; // stylelint-disable-line function-disallowed-list
+  margin-left: 0; // stylelint-disable-line function-disallowed-list
 }
-
-.row:after,.row:before {
-  display: table;
-  content: ""
-}
-
-.row:after {
-  clear: both
-}
-
-[class*="col-"] {
-  float: left;
+.row > * {
   box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-top: 0;
 }
 
-
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
-  %grid-column {
-    position: relative;
+@media (max-width: 575px) {
+  .col-xs-12 {
+    flex: 0 0 auto;
     width: 100%;
-    padding-right: $gutter * .5;
-    padding-left: $gutter * .5;
   }
+}
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
 
   @each $breakpoint in map-keys($breakpoints) {
-    $infix: unquote($breakpoint);
     @if $columns > 0 {
       // Allow columns to stretch full width below their breakpoints
-      @media only screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+      @media (min-width: #{inspect(map-get($breakpoints, $breakpoint))}) {
         @for $i from 1 through $columns {
-          .col-#{$infix}-#{$i} {
+          .col-#{$breakpoint}-#{$i} {
+            flex: 0 0 auto;
             // width: ($i / $columns) * 100%;
             // same as
             width: percentage($i / $columns);
