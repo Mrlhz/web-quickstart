@@ -4,6 +4,7 @@
       <Button class="title" size="large" @click="pageToBus">{{ starDetail.title }}</Button>
       <Button size="large" @click="handleCopy">Copy</Button>
       <Button size="large" @click="handleBack">Back</Button>
+      <Button size="large" type="outline-info">Info</Button>
     </div>
     <div class="starDetail" id="starDetailImages">
       <template v-for="item in list" :key="item.name">
@@ -92,20 +93,53 @@ export default {
     .title {
       margin-right: 10px;
     }
+    .v-button {
+      margin-right: 10px;
+    }
   }
   .starDetail {
-    display: flex;
-    flex-wrap: wrap;
     margin: 10px auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 25%);
+    width: 100%;
     .photo-box {
-      flex-basis: 25%;
       height: 300px;
       padding: 10px;
       overflow: hidden;
       img {
         width: 100%;
-        // height: 100%;
       }
+    }
+  }
+  @media (max-width: 575px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+  }
+  @media (min-width: 576px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 90%);
+    }
+  }
+  @media (min-width: 768px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 80%);
+    }
+  }
+  @media (min-width: 992px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 50%);
+    }
+  }
+  @media (min-width: 1200px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 33%);
+    }
+  }
+  @media (min-width: 1400px) {
+    .starDetail {
+      grid-template-columns: repeat(auto-fill, 25%);
     }
   }
 }

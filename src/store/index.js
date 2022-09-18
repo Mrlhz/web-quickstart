@@ -15,10 +15,10 @@ export const useStarStore = defineStore('star', {
 })
 
 export const useMovieStore = defineStore('movie', () => {
-  const count = ref(0)
-  const name = ref('counter')
+  const name = ref('movie')
   const star = ref({})
   const movie = ref({})
+  const count = ref(0)
   const doubleCount = computed(() => count.value * 2)
   function setStar(val) {
     star.value = val
@@ -29,9 +29,9 @@ export const useMovieStore = defineStore('movie', () => {
 
   return {
     name,
-    count,
     star,
     movie,
+    count,
     doubleCount,
     setStar,
     setMovie

@@ -25,15 +25,10 @@ function getLocalData(key) {
   return result
 }
 
-function findItem(array = [], index) {
-  const { length } = array
-  const i = index >= 0 ? index : length + index
-  return array[i] || ''
-}
 function extname(path) {
   // http://localhost:3005/%E6%97%A5%E5%90%91%E3%81%AA%E3%81%A4/CAWD-279/cawd00279jp-1.jpg
   const pathArr = path.split('/')
-  const file = findItem(pathArr, -1)
+  const file = pathArr.at(-1)
   const fileArr = file.split('.')
   return file.includes('.') ? `.${fileArr[1]}` : ''
 }
@@ -41,7 +36,6 @@ function extname(path) {
 export {
   copyToClipboard,
   extname,
-  findItem,
   setLocalData,
   getLocalData
 }
