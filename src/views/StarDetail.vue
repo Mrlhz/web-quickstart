@@ -1,10 +1,10 @@
 <template>
   <div class="starDetailWrapper">
     <div class="info">
-      <Button class="title" size="large" @click="pageToBus">{{ starDetail.title }}</Button>
-      <Button size="large" @click="handleCopy">Copy</Button>
-      <Button size="large" @click="handleBack">Back</Button>
-      <Button size="large" type="outline-info">Info</Button>
+      <VButton class="title" size="large" @click="pageToBus">{{ starDetail.title }}</VButton>
+      <VButton size="large" type="outline-info" @click="handleCopy">Copy</VButton>
+      <VButton size="large" @click="handleBack">Back</VButton>
+      <v-button size="large" type="outline-info">Info</v-button>
     </div>
     <div class="starDetail" id="starDetailImages">
       <template v-for="item in list" :key="item.name">
@@ -19,7 +19,7 @@
 import Viewer from 'viewerjs'
 import { setLocalData, getLocalData, copyToClipboard } from '@/utils/util'
 import { getStarDetail } from '@/utils/request'
-import Button from '../../packages/button/Button'
+import VButton from '../../packages/button/Button'
 import { useStarStore } from '../store/index'
 
 const store = useStarStore()
@@ -27,7 +27,7 @@ const store = useStarStore()
 export default {
   name: 'StarDetail',
   components: {
-    Button
+    VButton
   },
   props: {},
   data() {
